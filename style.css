@@ -200,11 +200,38 @@ section { padding: 7rem 4vw; }
 .pillar-word { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; font-style: italic; color: var(--teal); display: block; margin-bottom: 0.4rem; }
 
 /* CTA */
-.cta-section { text-align: center; background: var(--surface); border-top: 1px solid var(--border); position: relative; overflow: hidden; }
+.cta-section { background: var(--surface); border-top: 1px solid var(--border); position: relative; overflow: hidden; padding: 7rem 4vw; }
 .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(45,212,191,0.06) 0%, transparent 70%); }
-.cta-section .section-title { margin: 0 auto 1rem; }
-.cta-section .section-sub { margin: 0 auto 3rem; }
-.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+
+.cta { font-family: 'DM Sans', sans-serif; position: relative; z-index: 1; }
+.cta-header { text-align: center; margin-bottom: 3.5rem; }
+.cta-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; margin-bottom: 1.2rem; }
+.cta-header p { color: var(--muted); font-size: 1rem; max-width: 55ch; margin: 0 auto; line-height: 1.7; }
+
+.cta-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+.cta-card { background: var(--ink); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 1.2rem; transition: all 0.3s ease; }
+.cta-card:hover { border-color: var(--teal); background: var(--card); transform: translateY(-4px); }
+.cta-card-icon { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem; }
+.cta-card-icon svg { width: 24px; height: 24px; }
+.cta-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; margin: 0; color: var(--text); }
+.cta-card p { font-size: 0.9rem; color: var(--muted); margin: 0; line-height: 1.6; flex: 1; }
+.cta-card-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.cta-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; padding: 0.2rem 0.7rem; border-radius: 99px; border: 1px solid var(--border); color: var(--muted); }
+
+.mailto-btn { display: flex; align-items: center; justify-content: center; gap: 0.6rem; padding: 0.85rem 1.4rem; border-radius: 8px; font-size: 0.82rem; font-weight: 500; text-decoration: none; border: 1px solid; transition: all 0.25s; margin-top: 0.5rem; letter-spacing: 0.05em; text-transform: uppercase; }
+.mailto-btn:hover { opacity: 0.9; transform: scale(1.02); }
+.mailto-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+.btn-blue  { background: rgba(56, 189, 248, 0.1); color: #7dd3fc; border-color: rgba(56, 189, 248, 0.3); }
+.btn-green { background: rgba(45, 212, 191, 0.1); color: #2dd4bf; border-color: rgba(45, 212, 191, 0.3); }
+.btn-amber { background: rgba(226, 201, 126, 0.1); color: #e2c97e; border-color: rgba(226, 201, 126, 0.3); }
+
+@media (max-width: 1024px) {
+  .cta-cards { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .cta-cards { grid-template-columns: 1fr; }
+}
 
 /* FOOTER */
 footer { padding: 3rem 4vw; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }

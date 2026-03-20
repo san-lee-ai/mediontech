@@ -14,20 +14,30 @@
   }
 
   function initImageHandlers() {
-    // Use capture to catch errors early, or delegate from document
+    // ... same as before
     document.addEventListener('error', function(e) {
       if (e.target.tagName === 'IMG' && e.target.closest('.alliance-badge')) {
         e.target.classList.add('img-error');
       }
     }, true);
     
-    // Catch images that might have already failed
     document.querySelectorAll('.alliance-badge img').forEach(img => {
       if (img.complete && img.naturalWidth === 0) {
         img.classList.add('img-error');
       }
     });
   }
+
+  let mailConfigs = {};
+  const DEFAULT_EMAIL = 'info@mediontech.com';
+
+  window.openMail = function(type) {
+    const c = mailConfigs[type];
+    if (!c) return;
+    const subject = encodeURIComponent(c.subject);
+    const body = encodeURIComponent(c.body);
+    window.location.href = `mailto:${DEFAULT_EMAIL}?subject=${subject}&body=${body}`;
+  };
 
   async function fetchNews(config) {
     const rssUrl = 'https://www.mediontech.com/rss/';
@@ -111,6 +121,9 @@
   // Expose init function
   window.MediOnTech = {
     init: function(config) {
+      if (config.mailConfigs) {
+        mailConfigs = config.mailConfigs;
+      }
       initReveals();
       initImageHandlers();
       fetchNews(config);

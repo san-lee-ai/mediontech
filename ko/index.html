@@ -321,13 +321,82 @@
 
 <!-- CTA -->
 <section id="cta" class="cta-section">
-  <div class="section-tag" style="justify-content:center;display:flex;">/ 미래에 동참하세요</div>
-  <h2 class="section-title reveal">미래 의료 혁신에<br><em>함께하세요</em></h2>
-  <p class="section-sub reveal">모든 곳의 모든 사람을 위해 건강의 의미를 재정의하는 플랫폼에 파트너로 참여하거나 투자하고, 조기 액세스를 신청하세요.</p>
-  <div class="cta-btns reveal">
-    <a href="#" class="btn-primary">파트너십 문의</a>
-    <a href="#" class="btn-secondary">투자 문의</a>
-    <a href="#" class="btn-outline">조기 액세스 등록</a>
+  <div class="cta">
+    <div class="cta-header">
+      <h2 class="reveal">미래 의료 혁신에 함께하세요</h2>
+      <p class="reveal">모든 곳의 모든 사람을 위해 건강의 의미를 재정의하는 플랫폼에 파트너로 참여하거나 투자하고, 조기 액세스를 신청하세요.</p>
+    </div>
+
+    <div class="cta-cards reveal">
+      <div class="cta-card">
+        <div class="cta-card-icon" style="background:rgba(56, 189, 248, 0.1);">
+          <svg viewBox="0 0 20 20" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 2L4 5.5v5c0 4 2.8 7.5 6 8.5 3.2-1 6-4.5 6-8.5v-5L10 2z"/>
+          </svg>
+        </div>
+        <h3>파트너십 문의</h3>
+        <p>기술·유통·의료기관 등 다양한 파트너십 협력 기회를 함께 논의합니다.</p>
+        <div class="cta-card-tags">
+          <span class="cta-tag">기술 통합</span>
+          <span class="cta-tag">유통</span>
+          <span class="cta-tag">의료기관</span>
+        </div>
+        <a class="mailto-btn btn-blue" href="#" onclick="openMail('partner'); return false;">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="12" height="9" rx="1.5"/>
+            <path d="M1 4.5l6 4 6-4"/>
+          </svg>
+          파트너십 문의하기
+        </a>
+      </div>
+
+      <div class="cta-card">
+        <div class="cta-card-icon" style="background:rgba(45, 212, 191, 0.1);">
+          <svg viewBox="0 0 20 20" fill="none" stroke="#2dd4bf" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="2,15 6,9 10,12 18,4"/>
+            <polyline points="13,4 18,4 18,9"/>
+          </svg>
+        </div>
+        <h3>투자 문의</h3>
+        <p>Series A 라운드에 관심 있는 투자자를 위한 IR 자료와 미팅 일정을 안내합니다.</p>
+        <div class="cta-card-tags">
+          <span class="cta-tag">Series A</span>
+          <span class="cta-tag">VC / PE</span>
+          <span class="cta-tag">전략적 투자</span>
+        </div>
+        <a class="mailto-btn btn-green" href="#" onclick="openMail('investor'); return false;">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="12" height="9" rx="1.5"/>
+            <path d="M1 4.5l6 4 6-4"/>
+          </svg>
+          투자 관심 표명하기
+        </a>
+      </div>
+
+      <div class="cta-card">
+        <div class="cta-card-icon" style="background:rgba(226, 201, 126, 0.1);">
+          <svg viewBox="0 0 20 20" fill="none" stroke="#e2c97e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="10" cy="10" r="8"/>
+            <polyline points="10,6 10,10 13,12"/>
+          </svg>
+        </div>
+        <h3>조기 액세스 등록</h3>
+        <p>플랫폼 베타 출시 시 가장 먼저 초대받고 제품 방향에 직접 기여하세요.</p>
+        <div class="cta-card-tags">
+          <span class="cta-tag">베타</span>
+          <span class="cta-tag">개인 / 기업</span>
+          <span class="cta-tag">우선 초대</span>
+        </div>
+        <a class="mailto-btn btn-amber" href="#" onclick="openMail('early'); return false;">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="12" height="9" rx="1.5"/>
+            <path d="M1 4.5l6 4 6-4"/>
+          </svg>
+          조기 액세스 등록하기
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -349,7 +418,60 @@
     errorMsg: '뉴스를 불러올 수 없습니다.',
     defaultCatFeatured: '인사이트',
     defaultCatGrid: '뉴스',
-    freeTag: '무료'
+    freeTag: '무료',
+    mailConfigs: {
+      partner: {
+        subject: '[파트너십 문의] MediOnTech 파트너십에 관심이 있습니다',
+        body: [
+          '안녕하세요, MediOnTech 팀,',
+          '',
+          '귀사의 플랫폼에 관심을 갖고 파트너십 문의를 드립니다.',
+          '',
+          '■ 회사명:',
+          '■ 담당자 이름:',
+          '■ 파트너십 유형 (기술 통합 / 유통 / 의료기관 / 기타):',
+          '■ 제안하시는 협력 아이디어:',
+          '',
+          '검토 후 연락 주시면 감사하겠습니다.',
+          '',
+          '감사합니다.'
+        ].join('\n')
+      },
+      investor: {
+        subject: '[투자 문의] MediOnTech Series A 투자 관심 표명',
+        body: [
+          '안녕하세요, MediOnTech 팀,',
+          '',
+          'Series A 라운드와 관련하여 투자 관심을 표명하고자 연락드립니다.',
+          '',
+          '■ 소속 기관명:',
+          '■ 담당자 이름:',
+          '■ 투자자 유형 (VC / PE / 엔젤 / CVC / 패밀리오피스 / 기타):',
+          '■ 예상 투자 규모:',
+          '■ 추가 문의 사항:',
+          '',
+          'IR 자료 및 미팅 일정을 안내해 주시면 감사하겠습니다.',
+          '',
+          '감사합니다.'
+        ].join('\n')
+      },
+      early: {
+        subject: '[조기 액세스] MediOnTech 베타 프로그램 등록 신청',
+        body: [
+          '안녕하세요, MediOnTech 팀,',
+          '',
+          '베타 출시 시 조기 액세스를 신청하고자 합니다.',
+          '',
+          '■ 이름:',
+          '■ 소속 (병원 / 기업 / 개인):',
+          '■ 관심 사용 사례 (개인 건강관리 / 가족 모니터링 / 기업 복지 / 임상 연구 / 원격진료):',
+          '■ 가장 기대되는 기능:',
+          '■ 추가 의견:',
+          '',
+          '감사합니다.'
+        ].join('\n')
+      }
+    }
   });
 </script>
 </body>

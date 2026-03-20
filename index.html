@@ -321,13 +321,82 @@
 
 <!-- CTA -->
 <section id="cta" class="cta-section">
-  <div class="section-tag" style="justify-content:center;display:flex;">/ Join The Future</div>
-  <h2 class="section-title reveal">Join us in the<br><em>future of healthcare</em></h2>
-  <p class="section-sub reveal">Partner with us, invest, or get early access to the platform that's redefining what it means to be healthy — for everyone, everywhere.</p>
-  <div class="cta-btns reveal">
-    <a href="#" class="btn-primary">Partner With Us</a>
-    <a href="#" class="btn-secondary">Investor Inquiry</a>
-    <a href="#" class="btn-outline">Early Access Registration</a>
+  <div class="cta">
+    <div class="cta-header">
+      <h2 class="reveal">Join the Future of Healthcare</h2>
+      <p class="reveal">Partner with us, invest, or get early access to the platform that's redefining what it means to be healthy — for everyone, everywhere.</p>
+    </div>
+
+    <div class="cta-cards reveal">
+      <div class="cta-card">
+        <div class="cta-card-icon" style="background:rgba(56, 189, 248, 0.1);">
+          <svg viewBox="0 0 20 20" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 2L4 5.5v5c0 4 2.8 7.5 6 8.5 3.2-1 6-4.5 6-8.5v-5L10 2z"/>
+          </svg>
+        </div>
+        <h3>Partnership Inquiry</h3>
+        <p>Explore collaboration opportunities across technology, distribution, and clinical networks.</p>
+        <div class="cta-card-tags">
+          <span class="cta-tag">Tech Integration</span>
+          <span class="cta-tag">Distribution</span>
+          <span class="cta-tag">Clinical</span>
+        </div>
+        <a class="mailto-btn btn-blue" href="#" onclick="openMail('partner'); return false;">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="12" height="9" rx="1.5"/>
+            <path d="M1 4.5l6 4 6-4"/>
+          </svg>
+          Inquire About Partnership
+        </a>
+      </div>
+
+      <div class="cta-card">
+        <div class="cta-card-icon" style="background:rgba(45, 212, 191, 0.1);">
+          <svg viewBox="0 0 20 20" fill="none" stroke="#2dd4bf" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="2,15 6,9 10,12 18,4"/>
+            <polyline points="13,4 18,4 18,9"/>
+          </svg>
+        </div>
+        <h3>Investor Relations</h3>
+        <p>Information for investors interested in our Series A round and strategic growth roadmap.</p>
+        <div class="cta-card-tags">
+          <span class="cta-tag">Series A</span>
+          <span class="cta-tag">VC / PE</span>
+          <span class="cta-tag">Strategic</span>
+        </div>
+        <a class="mailto-btn btn-green" href="#" onclick="openMail('investor'); return false;">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="12" height="9" rx="1.5"/>
+            <path d="M1 4.5l6 4 6-4"/>
+          </svg>
+          Express Investment Interest
+        </a>
+      </div>
+
+      <div class="cta-card">
+        <div class="cta-card-icon" style="background:rgba(226, 201, 126, 0.1);">
+          <svg viewBox="0 0 20 20" fill="none" stroke="#e2c97e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="10" cy="10" r="8"/>
+            <polyline points="10,6 10,10 13,12"/>
+          </svg>
+        </div>
+        <h3>Early Access</h3>
+        <p>Register to be among the first to experience the platform and shape our product direction.</p>
+        <div class="cta-card-tags">
+          <span class="cta-tag">Beta</span>
+          <span class="cta-tag">Personal / Corp</span>
+          <span class="cta-tag">Waitlist</span>
+        </div>
+        <a class="mailto-btn btn-amber" href="#" onclick="openMail('early'); return false;">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="12" height="9" rx="1.5"/>
+            <path d="M1 4.5l6 4 6-4"/>
+          </svg>
+          Register for Early Access
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -349,7 +418,59 @@
     errorMsg: 'Unable to load latest news at this time.',
     defaultCatFeatured: 'Insights',
     defaultCatGrid: 'News',
-    freeTag: 'Free'
+    freeTag: 'Free',
+    mailConfigs: {
+      partner: {
+        subject: '[Partnership] Interest in MediOnTech Partnership',
+        body: [
+          'Dear MediOnTech Team,',
+          '',
+          'I am interested in exploring a partnership with your platform.',
+          '',
+          '■ Organization Name:',
+          '■ Contact Person:',
+          '■ Partnership Type (Tech / Distribution / Clinical / Other):',
+          '■ Proposed Collaboration Idea:',
+          '',
+          'I look forward to hearing from you.',
+          '',
+          'Best regards,'
+        ].join('\n')
+      },
+      investor: {
+        subject: '[Investor] Expression of Interest in Series A',
+        body: [
+          'Dear MediOnTech Team,',
+          '',
+          'I am contacting you regarding your Series A round.',
+          '',
+          '■ Firm/Organization:',
+          '■ Contact Name:',
+          '■ Investor Type (VC / PE / Angel / CVC / Other):',
+          '■ Estimated Investment Size:',
+          '■ Additional Questions:',
+          '',
+          'Please share IR materials and potential meeting times.',
+          '',
+          'Best regards,'
+        ].join('\n')
+      },
+      early: {
+        subject: '[Early Access] Request for Beta Program Registration',
+        body: [
+          'Dear MediOnTech Team,',
+          '',
+          'I would like to register for early access to the MediOnTech platform.',
+          '',
+          '■ Name:',
+          '■ Affiliation (Clinical / Corporate / Personal):',
+          '■ Primary Use Case (Family Health / Employee Wellness / Research / Telehealth):',
+          '■ Key Feature Interests:',
+          '',
+          'Best regards,'
+        ].join('\n')
+      }
+    }
   });
 </script>
 </body>
