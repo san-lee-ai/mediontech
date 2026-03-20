@@ -6,219 +6,19 @@
 <title>MediOnTech — Your Lifelong Digital Family Doctor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --deep: #080e14;
-    --ink: #0d1a26;
-    --surface: #101e2c;
-    --card: #132236;
-    --border: rgba(80,160,220,0.12);
-    --teal: #2dd4bf;
-    --sky: #38bdf8;
-    --gold: #e2c97e;
-    --text: #e8f0f8;
-    --muted: #7a9ab8;
-    --faint: rgba(255,255,255,0.04);
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--deep);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 4vw;
-    background: rgba(8,14,20,0.88);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--text); }
-  .nav-logo span { color: var(--teal); }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--text); }
-  .nav-cta { padding: 0.55rem 1.4rem; background: transparent; border: 1px solid var(--teal); color: var(--teal); font-family: 'DM Sans', sans-serif; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.25s; text-decoration: none; }
-  .nav-cta:hover { background: var(--teal); color: var(--deep); }
-
-  /* HERO */
-  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 10rem 4vw 6rem; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(45,212,191,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(45,212,191,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, black 20%, transparent 100%); }
-  .hero::after { content: ''; position: absolute; width: 700px; height: 700px; top: -150px; right: -200px; background: radial-gradient(circle, rgba(45,212,191,0.08) 0%, transparent 70%); pointer-events: none; }
-  .hero-orb2 { position: absolute; width: 500px; height: 500px; bottom: -100px; left: 10%; background: radial-gradient(circle, rgba(56,189,248,0.06) 0%, transparent 70%); pointer-events: none; }
-  .hero-tag { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); border: 1px solid rgba(45,212,191,0.3); padding: 0.35rem 0.9rem; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
-  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 7vw, 7rem); font-weight: 300; line-height: 1.05; max-width: 14ch; margin-bottom: 0.6rem; opacity: 0; animation: fadeUp 0.9s 0.4s forwards; }
-  .hero h1 em { font-style: italic; color: var(--teal); }
-  .hero-kr { font-size: clamp(0.9rem, 1.5vw, 1.2rem); color: var(--muted); font-weight: 300; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.9s 0.55s forwards; }
-  .hero-desc { max-width: 52ch; font-size: 1rem; color: var(--muted); margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.9s 0.7s forwards; }
-  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.9s 0.85s forwards; }
-
-  .btn-primary { padding: 0.85rem 2.2rem; background: var(--teal); color: var(--deep); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; text-decoration: none; transition: all 0.25s; position: relative; overflow: hidden; }
-  .btn-primary::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.15); transform: translateX(-100%); transition: transform 0.3s; }
-  .btn-primary:hover::after { transform: translateX(0); }
-  .btn-secondary { padding: 0.85rem 2.2rem; background: transparent; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--border); cursor: pointer; text-decoration: none; transition: all 0.25s; }
-  .btn-secondary:hover { border-color: var(--muted); }
-  .btn-outline { padding: 0.85rem 2rem; background: transparent; color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--border); cursor: pointer; text-decoration: none; transition: all 0.25s; }
-  .btn-outline:hover { color: var(--text); border-color: var(--muted); }
-
-  /* STATS */
-  .stats-bar { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2.5rem 4vw; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; }
-  .stat { text-align: center; }
-  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 600; color: var(--teal); line-height: 1; }
-  .stat-label { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; }
-
-  /* SECTIONS */
-  section { padding: 7rem 4vw; }
-  .section-tag { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; }
-  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.15; margin-bottom: 1.2rem; }
-  .section-title em { font-style: italic; color: var(--gold); }
-  .section-sub { max-width: 55ch; color: var(--muted); font-size: 1rem; margin-bottom: 4rem; }
-
-  /* PARADIGM */
-  .paradigm { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .paradigm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .paradigm-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300; line-height: 1.3; font-style: italic; border-left: 2px solid var(--teal); padding-left: 2rem; color: var(--text); }
-  .paradigm-quote span { color: var(--teal); font-style: normal; font-weight: 600; }
-  .paradigm-kr { font-size: 0.88rem; color: var(--muted); margin-top: 1rem; padding-left: 2rem; }
-  .shift-list { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
-  .shift-item { display: flex; gap: 1.2rem; align-items: flex-start; padding: 1.2rem 1.5rem; background: var(--faint); border: 1px solid var(--border); }
-  .shift-arrow { font-size: 1.2rem; color: var(--teal); margin-top: 0.1rem; flex-shrink: 0; }
-  .shift-text { font-size: 0.92rem; }
-  .shift-text strong { color: var(--text); font-weight: 500; display: block; }
-  .shift-text span { color: var(--muted); font-size: 0.82rem; }
-
-  /* CONTINUUM */
-  .continuum-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-  .cont-card { background: var(--ink); padding: 2rem 2rem 2.5rem; position: relative; overflow: hidden; transition: background 0.3s; }
-  .cont-card:hover { background: var(--card); }
-  .cont-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--teal), transparent); opacity: 0; transition: opacity 0.3s; }
-  .cont-card:hover::before { opacity: 1; }
-  .cont-num { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--teal); margin-bottom: 0.8rem; }
-  .cont-title { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; }
-  .cont-kr { font-size: 0.78rem; color: var(--muted); margin-bottom: 1rem; }
-  .cont-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
-  .cont-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.2rem; }
-  .cont-tag { font-size: 0.68rem; letter-spacing: 0.08em; padding: 0.25rem 0.6rem; border: 1px solid rgba(45,212,191,0.2); color: var(--teal); }
-
-  /* ALLIANCE BADGES */
-  .cont-alliance { margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px solid var(--border); }
-  .cont-alliance-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.8rem; }
-  .alliance-logos { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
-  .alliance-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.65rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.04em; transition: border-color 0.2s, color 0.2s; cursor: default; }
-  .alliance-badge:hover { border-color: rgba(45,212,191,0.4); color: var(--teal); }
-  .alliance-badge .dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; opacity: 0.5; flex-shrink: 0; }
-
-  /* NEWS TICKER */
-  .news-ticker { background: rgba(13,26,38,0.9); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0.75rem 0; overflow: hidden; white-space: nowrap; }
-  .ticker-inner { display: inline-flex; gap: 3rem; animation: tickerScroll 40s linear infinite; }
-  .ticker-item { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.06em; color: var(--muted); text-decoration: none; transition: color 0.2s; flex-shrink: 0; }
-  .ticker-item:hover { color: var(--teal); }
-  .ticker-sep { color: rgba(45,212,191,0.35); font-size: 0.6rem; }
-  @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-  /* NEWS SECTION */
-  .news-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .news-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
-  .news-view-all { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(45,212,191,0.3); padding-bottom: 2px; white-space: nowrap; transition: border-color 0.2s; }
-  .news-view-all:hover { border-color: var(--teal); }
-
-  /* Featured */
-  .news-featured { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 1px; }
-  .news-featured-img { position: relative; overflow: hidden; aspect-ratio: 16/10; }
-  .news-featured-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
-  .news-featured:hover .news-featured-img img { transform: scale(1.03); }
-  .news-featured-body { background: var(--ink); padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; transition: background 0.3s; }
-  .news-featured:hover .news-featured-body { background: var(--card); }
-  .news-cat { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; }
-  .news-featured-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 400; line-height: 1.25; color: var(--text); margin-bottom: 1rem; text-decoration: none; display: block; transition: color 0.2s; }
-  .news-featured-title:hover { color: var(--teal); }
-  .news-featured-excerpt { font-size: 0.88rem; color: var(--muted); line-height: 1.65; margin-bottom: 2rem; flex: 1; }
-  .news-meta { display: flex; gap: 1.2rem; align-items: center; font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; color: var(--muted); }
-  .news-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); }
-
-  /* Grid */
-  .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-top: none; }
-  .news-card { background: var(--ink); text-decoration: none; display: flex; flex-direction: column; overflow: hidden; transition: background 0.3s; }
-  .news-card:hover { background: var(--card); }
-  .news-card-img { width: 100%; aspect-ratio: 16/9; overflow: hidden; }
-  .news-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
-  .news-card:hover .news-card-img img { transform: scale(1.04); }
-  .news-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
-  .news-card-cat { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.6rem; }
-  .news-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; line-height: 1.35; color: var(--text); margin-bottom: 0.8rem; flex: 1; }
-  .news-card-date { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--muted); margin-top: auto; }
-
-  /* ECOSYSTEM */
-  .ecosystem { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .eco-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 4rem; }
-  .eco-item { background: var(--ink); padding: 1.5rem 1rem; text-align: center; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.06em; transition: all 0.25s; }
-  .eco-item:hover { background: var(--card); color: var(--text); }
-  .eco-icon { font-size: 1.5rem; margin-bottom: 0.5rem; display: block; }
-
-  /* GLOBAL */
-  .global-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
-  .global-visual { position: relative; aspect-ratio: 1; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  .globe-rings { position: relative; width: 260px; height: 260px; }
-  .ring { position: absolute; border-radius: 50%; border: 1px solid rgba(45,212,191,0.15); top: 50%; left: 50%; transform: translate(-50%, -50%); }
-  .ring-1 { width: 100%; height: 100%; animation: pulse 3s ease-in-out infinite; }
-  .ring-2 { width: 75%; height: 75%; animation: pulse 3s ease-in-out 0.5s infinite; border-color: rgba(45,212,191,0.22); }
-  .ring-3 { width: 50%; height: 50%; animation: pulse 3s ease-in-out 1s infinite; border-color: rgba(45,212,191,0.35); }
-  .globe-dot { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 12px; height: 12px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 20px var(--teal); }
-  .globe-node { position: absolute; width: 7px; height: 7px; border-radius: 50%; background: var(--sky); border: 1px solid var(--deep); }
-  .global-visual::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(45,212,191,0.05) 0%, transparent 70%); }
-
-  /* VISION */
-  .vision { background: var(--ink); border-top: 1px solid var(--border); }
-  .vision-pillars { display: flex; gap: 1px; flex-wrap: wrap; background: var(--border); border: 1px solid var(--border); margin-top: 3rem; }
-  .pillar { flex: 1; min-width: 140px; background: var(--deep); padding: 2.5rem 1.5rem; text-align: center; transition: background 0.3s; }
-  .pillar:hover { background: var(--card); }
-  .pillar-word { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; font-style: italic; color: var(--teal); display: block; margin-bottom: 0.4rem; }
-  .pillar-kr { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; }
-
-  /* CTA */
-  .cta-section { text-align: center; background: var(--surface); border-top: 1px solid var(--border); position: relative; overflow: hidden; }
-  .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(45,212,191,0.06) 0%, transparent 70%); }
-  .cta-section .section-title { margin: 0 auto 1rem; }
-  .cta-section .section-sub { margin: 0 auto 3rem; }
-  .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
-
-  /* FOOTER */
-  footer { padding: 3rem 4vw; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--muted); }
-  .footer-logo span { color: var(--teal); }
-  .footer-note { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes pulse { 0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; } 50% { transform: translate(-50%, -50%) scale(1.06); opacity: 0.6; } }
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    .nav-links { display: none; }
-    .paradigm-grid, .global-inner, .news-featured { grid-template-columns: 1fr; }
-    .news-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 600px) {
-    .news-grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 2.8rem; }
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Medi<span>On</span>Tech</div>
+  <div class="nav-left">
+    <a href="/" class="nav-logo">Medi<span>On</span>Tech</a>
+    <div class="nav-lang">
+      <a href="/" class="active">EN</a>
+      <a href="ko/">KO</a>
+    </div>
+  </div>
   <ul class="nav-links">
     <li><a href="#paradigm">Vision</a></li>
     <li><a href="#continuum">Platform</a></li>
@@ -226,7 +26,9 @@
     <li><a href="#ecosystem">Ecosystem</a></li>
     <li><a href="#global">Global</a></li>
   </ul>
-  <a href="#cta" class="nav-cta">Partner With Us</a>
+  <div class="nav-right">
+    <a href="#cta" class="nav-cta">Partner With Us</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -234,11 +36,10 @@
   <div class="hero-orb2"></div>
   <div class="hero-tag">Lifelong Digital Health Platform</div>
   <h1>Your Lifelong<br><em>Digital Family</em><br>Doctor</h1>
-  <p class="hero-kr">평생을 함께하는 디지털 패밀리 닥터</p>
   <p class="hero-desc">MediOnTech vertically integrates advanced healthcare technologies to support prevention, early intervention, treatment, and lifelong wellness.</p>
   <div class="hero-btns">
     <a href="#continuum" class="btn-primary">Explore Our Vision</a>
-    <a href="#cta" class="btn-secondary">파트너십 문의</a>
+    <a href="#cta" class="btn-secondary">Contact Us</a>
   </div>
 </section>
 
@@ -259,20 +60,19 @@
         Healthcare should not begin at the hospital.<br>
         It should begin with <span>continuous understanding.</span>
       </blockquote>
-      <p class="paradigm-kr">의료는 병원에서 시작되어서는 안 됩니다. 지속적인 이해와 관찰에서 시작되어야 합니다.</p>
     </div>
     <ul class="shift-list reveal">
       <li class="shift-item">
         <span class="shift-arrow">→</span>
-        <div class="shift-text"><strong>Reactive → Predictive</strong><span>사후 치료 중심에서 예측 기반 예방 중심으로</span></div>
+        <div class="shift-text"><strong>Reactive → Predictive</strong><span>Shift from reactive care to prediction-based prevention.</span></div>
       </li>
       <li class="shift-item">
         <span class="shift-arrow">→</span>
-        <div class="shift-text"><strong>Fragmented → Integrated</strong><span>단편적 서비스에서 수직 통합 의료 생태계로</span></div>
+        <div class="shift-text"><strong>Fragmented → Integrated</strong><span>Evolve from fragmented services to a vertically integrated medical ecosystem.</span></div>
       </li>
       <li class="shift-item">
         <span class="shift-arrow">→</span>
-        <div class="shift-text"><strong>Hospital-First → Prevention-First</strong><span>증상이 나타나기 전 건강 이상 신호를 감지</span></div>
+        <div class="shift-text"><strong>Hospital-First → Prevention-First</strong><span>Detect health signals before symptoms even appear.</span></div>
       </li>
     </ul>
   </div>
@@ -282,23 +82,21 @@
 <section id="continuum">
   <div class="section-tag">/ MediOnTech Health Continuum</div>
   <h2 class="section-title">The <em>Complete</em> Care Journey</h2>
-  <p class="section-sub">MediOnTech 헬스 컨티넘 — an end-to-end platform spanning every dimension of health, powered by world-class alliances.</p>
+  <p class="section-sub">MediOnTech Health Continuum — an end-to-end platform spanning every dimension of health, powered by world-class alliances.</p>
 
   <div class="continuum-grid">
 
     <div class="cont-card reveal">
       <div class="cont-num">01 / MONITOR</div>
       <div class="cont-title">Continuous Monitoring</div>
-      <div class="cont-kr">지속적 건강 모니터링</div>
       <div class="cont-desc">Wearables and smart sensing devices continuously collect non-invasive data: weight, pulse, blood pressure, saliva biomarkers, and metabolic signals.</div>
       <div class="cont-tags"><span class="cont-tag">Wearables</span><span class="cont-tag">Non-invasive</span><span class="cont-tag">Real-time</span></div>
       <div class="cont-alliance">
         <div class="cont-alliance-label">Alliance Partners</div>
         <div class="alliance-logos">
-          <span class="alliance-badge"><span class="dot"></span>Apple Health</span>
-          <span class="alliance-badge"><span class="dot"></span>Fitbit · Google</span>
-          <span class="alliance-badge"><span class="dot"></span>Garmin</span>
-          <span class="alliance-badge"><span class="dot"></span>Withings</span>
+          <a href="https://xkcorp.com/" target="_blank" class="alliance-link">
+            <span class="alliance-badge"><img src="images/xandar-kardian.svg" alt="Xandar Kardian">Xandar Kardian</span>
+          </a>
         </div>
       </div>
     </div>
@@ -306,15 +104,14 @@
     <div class="cont-card reveal">
       <div class="cont-num">02 / PREDICT</div>
       <div class="cont-title">Predictive Intervention</div>
-      <div class="cont-kr">예측 기반 조기 개입</div>
       <div class="cont-desc">AI-driven analytics detect subtle health changes before symptoms appear — timely alerts, personalized risk scoring, and preventive recommendations.</div>
       <div class="cont-tags"><span class="cont-tag">AI Analytics</span><span class="cont-tag">Risk Scoring</span><span class="cont-tag">Early Alert</span></div>
       <div class="cont-alliance">
         <div class="cont-alliance-label">Alliance Partners</div>
         <div class="alliance-logos">
-          <span class="alliance-badge"><span class="dot"></span>Google DeepMind</span>
-          <span class="alliance-badge"><span class="dot"></span>IBM Watson Health</span>
-          <span class="alliance-badge"><span class="dot"></span>Tempus AI</span>
+          <a href="https://drdiary.co.kr/" target="_blank" class="alliance-link">
+            <span class="alliance-badge"><img src="images/dr-diary.png" alt="Dr.Diary">Dr. Diary</span>
+          </a>
         </div>
       </div>
     </div>
@@ -322,15 +119,14 @@
     <div class="cont-card reveal">
       <div class="cont-num">03 / INDEX</div>
       <div class="cont-title">Personal Health Index</div>
-      <div class="cont-kr">개인 건강 지수</div>
       <div class="cont-desc">Your health translated into a dynamic, evolving index — non-invasive biomarker integration, lifestyle factors, and longitudinal tracking.</div>
       <div class="cont-tags"><span class="cont-tag">Biomarkers</span><span class="cont-tag">Longitudinal</span><span class="cont-tag">Dynamic</span></div>
       <div class="cont-alliance">
         <div class="cont-alliance-label">Alliance Partners</div>
         <div class="alliance-logos">
-          <span class="alliance-badge"><span class="dot"></span>Oura Ring</span>
-          <span class="alliance-badge"><span class="dot"></span>Levels Health</span>
-          <span class="alliance-badge"><span class="dot"></span>WHOOP</span>
+          <a href="https://www.drclobo.com/" target="_blank" class="alliance-link">
+            <span class="alliance-badge"><img src="images/dr-clobo.png" alt="Clobo">Clobo</span>
+          </a>
         </div>
       </div>
     </div>
@@ -338,15 +134,14 @@
     <div class="cont-card reveal">
       <div class="cont-num">04 / ADAPT</div>
       <div class="cont-title">Context-Aware Intelligence</div>
-      <div class="cont-kr">맥락 기반 의료 정보 제공</div>
       <div class="cont-desc">Health guidance adapts to age, season, region, and environmental conditions — always relevant, always personalized to your exact context.</div>
       <div class="cont-tags"><span class="cont-tag">Personalized</span><span class="cont-tag">Contextual</span><span class="cont-tag">Adaptive</span></div>
       <div class="cont-alliance">
-        <div class="cont-alliance-label">Alliance Partners</div>
+        <div class="cont-alliance-label">Alliance Opportunities</div>
         <div class="alliance-logos">
-          <span class="alliance-badge"><span class="dot"></span>AWS HealthLake</span>
-          <span class="alliance-badge"><span class="dot"></span>Azure Health</span>
-          <span class="alliance-badge"><span class="dot"></span>Anthropic</span>
+          <a href="#cta" class="alliance-link">
+            <span class="alliance-badge" style="border-style: dashed; opacity: 0.8;"><span class="dot"></span>Partnership Inquiry</span>
+          </a>
         </div>
       </div>
     </div>
@@ -354,15 +149,14 @@
     <div class="cont-card reveal">
       <div class="cont-num">05 / CONNECT</div>
       <div class="cont-title">Global Medical Network</div>
-      <div class="cont-kr">의료 관광 및 글로벌 치료 연계</div>
       <div class="cont-desc">Treatment comparison, outcome transparency, and a medical summary dashboard connecting patients to optimized global networks.</div>
       <div class="cont-tags"><span class="cont-tag">Global</span><span class="cont-tag">Transparency</span><span class="cont-tag">Comparison</span></div>
       <div class="cont-alliance">
         <div class="cont-alliance-label">Alliance Partners</div>
         <div class="alliance-logos">
-          <span class="alliance-badge"><span class="dot"></span>JCI Hospitals</span>
-          <span class="alliance-badge"><span class="dot"></span>Mayo Clinic Platform</span>
-          <span class="alliance-badge"><span class="dot"></span>Bumrungrad</span>
+          <a href="https://search-doc.ai" target="_blank" class="alliance-link">
+            <span class="alliance-badge"><img src="images/search-doc.png" alt="Search-Doc.AI">Search-Doc.AI</span>
+          </a>
         </div>
       </div>
     </div>
@@ -370,15 +164,17 @@
     <div class="cont-card reveal">
       <div class="cont-num">06 / CONSULT</div>
       <div class="cont-title">Telemedicine Network</div>
-      <div class="cont-kr">원격진료 및 의료진 네트워크</div>
       <div class="cont-desc">Licensed physicians seamlessly connected for cross-border care, secure digital consultation, and integrated medical history access.</div>
       <div class="cont-tags"><span class="cont-tag">Telehealth</span><span class="cont-tag">Cross-border</span><span class="cont-tag">Secure</span></div>
       <div class="cont-alliance">
         <div class="cont-alliance-label">Alliance Partners</div>
         <div class="alliance-logos">
-          <span class="alliance-badge"><span class="dot"></span>Teladoc Health</span>
-          <span class="alliance-badge"><span class="dot"></span>Doctor On Demand</span>
-          <span class="alliance-badge"><span class="dot"></span>MDLive</span>
+          <a href="https://us.kdocinc.com/" target="_blank" class="alliance-link">
+            <span class="alliance-badge"><img src="images/k-doc_b.png" alt="K-Doc">K-Doc</span>
+          </a>
+          <a href="https://maihub.ai" target="_blank" class="alliance-link">
+            <span class="alliance-badge"><img src="images/maihub.png" alt="maihub">maihub</span>
+          </a>
         </div>
       </div>
     </div>
@@ -386,16 +182,14 @@
     <div class="cont-card reveal">
       <div class="cont-num">07 / DIAGNOSE</div>
       <div class="cont-title">Active Diagnostics</div>
-      <div class="cont-kr">적극적 진단 개입</div>
       <div class="cont-desc">Glucose monitoring, rapid blood panels, and home diagnostic kits — when deeper clinical insight is necessary, we go further.</div>
       <div class="cont-tags"><span class="cont-tag">Glucose</span><span class="cont-tag">Home Kits</span><span class="cont-tag">Blood Panel</span></div>
       <div class="cont-alliance">
         <div class="cont-alliance-label">Alliance Partners</div>
         <div class="alliance-logos">
-          <span class="alliance-badge"><span class="dot"></span>Abbott</span>
-          <span class="alliance-badge"><span class="dot"></span>Dexcom</span>
-          <span class="alliance-badge"><span class="dot"></span>Labcorp</span>
-          <span class="alliance-badge"><span class="dot"></span>Everlywell</span>
+          <a href="https://www.acryl.ai" target="_blank" class="alliance-link">
+            <span class="alliance-badge"><img src="images/acryl_b.png" alt="Acryl">Acryl</span>
+          </a>
         </div>
       </div>
     </div>
@@ -403,16 +197,14 @@
     <div class="cont-card reveal">
       <div class="cont-num">08 / THRIVE</div>
       <div class="cont-title">Holistic Wellness</div>
-      <div class="cont-kr">전인적 웰빙 및 정신 건강</div>
       <div class="cont-desc">Mental health support, lifestyle coaching, yoga & meditation integration, and behavioral optimization — health is not only biological.</div>
       <div class="cont-tags"><span class="cont-tag">Mental Health</span><span class="cont-tag">Coaching</span><span class="cont-tag">Meditation</span></div>
       <div class="cont-alliance">
-        <div class="cont-alliance-label">Alliance Partners</div>
+        <div class="cont-alliance-label">Alliance Opportunities</div>
         <div class="alliance-logos">
-          <span class="alliance-badge"><span class="dot"></span>Calm</span>
-          <span class="alliance-badge"><span class="dot"></span>Headspace</span>
-          <span class="alliance-badge"><span class="dot"></span>Noom</span>
-          <span class="alliance-badge"><span class="dot"></span>BetterHelp</span>
+          <a href="#cta" class="alliance-link">
+            <span class="alliance-badge" style="border-style: dashed; opacity: 0.8;"><span class="dot"></span>Partnership Inquiry</span>
+          </a>
         </div>
       </div>
     </div>
@@ -420,15 +212,14 @@
     <div class="cont-card reveal">
       <div class="cont-num">09 / SECURE</div>
       <div class="cont-title">Security & Compliance</div>
-      <div class="cont-kr">보안 및 규제 준수</div>
       <div class="cont-desc">Privacy by design — HIPAA-aligned infrastructure, encrypted cloud architecture, transparent data ownership, and an ethical AI framework.</div>
       <div class="cont-tags"><span class="cont-tag">HIPAA</span><span class="cont-tag">Encrypted</span><span class="cont-tag">Ethical AI</span></div>
       <div class="cont-alliance">
-        <div class="cont-alliance-label">Alliance Partners</div>
+        <div class="cont-alliance-label">Alliance Opportunities</div>
         <div class="alliance-logos">
-          <span class="alliance-badge"><span class="dot"></span>AWS GovCloud</span>
-          <span class="alliance-badge"><span class="dot"></span>Microsoft Azure</span>
-          <span class="alliance-badge"><span class="dot"></span>Palo Alto Networks</span>
+          <a href="#cta" class="alliance-link">
+            <span class="alliance-badge" style="border-style: dashed; opacity: 0.8;"><span class="dot"></span>Partnership Inquiry</span>
+          </a>
         </div>
       </div>
     </div>
@@ -436,15 +227,14 @@
     <div class="cont-card reveal">
       <div class="cont-num">10 / OPTIMIZE</div>
       <div class="cont-title">Outcome Tracking</div>
-      <div class="cont-kr">건강 보조 제품 및 효과 추적</div>
       <div class="cont-desc">Supplements and health consumables tracked for measurable outcomes. No guesswork — only data-driven, measurable optimization.</div>
       <div class="cont-tags"><span class="cont-tag">Supplements</span><span class="cont-tag">Data-driven</span><span class="cont-tag">Optimization</span></div>
       <div class="cont-alliance">
         <div class="cont-alliance-label">Alliance Partners</div>
         <div class="alliance-logos">
-          <span class="alliance-badge"><span class="dot"></span>Thorne Research</span>
-          <span class="alliance-badge"><span class="dot"></span>Persona Nutrition</span>
-          <span class="alliance-badge"><span class="dot"></span>InsideTracker</span>
+          <a href="http://logsynk.com" target="_blank" class="alliance-link">
+            <span class="alliance-badge"><img src="images/logsynk.png" alt="LogSynk">LogSynk</span>
+          </a>
         </div>
       </div>
     </div>
@@ -455,7 +245,6 @@
 <!-- NEWS TICKER -->
 <div class="news-ticker">
   <div class="ticker-inner" id="ticker-content">
-    <!-- Dynamic content will be injected here -->
     <span class="ticker-item">Loading latest news...</span>
   </div>
 </div>
@@ -471,21 +260,14 @@
     <a href="https://www.mediontech.com" target="_blank" class="news-view-all">View All Articles →</a>
   </div>
 
-  <!-- Featured article -->
-  <div id="featured-news-container">
-    <!-- Dynamic featured article will be injected here -->
-  </div>
-
-  <!-- Grid articles -->
-  <div class="news-grid reveal" id="news-grid-container">
-    <!-- Dynamic grid articles will be injected here -->
-  </div>
+  <div id="featured-news-container"></div>
+  <div class="news-grid reveal" id="news-grid-container"></div>
 </section>
 
 <!-- ECOSYSTEM -->
 <section id="ecosystem" class="ecosystem">
   <div class="section-tag">/ Integrated Ecosystem</div>
-  <h2 class="section-title reveal">수직 통합 <em>의료 생태계</em></h2>
+  <h2 class="section-title reveal">Integrated <em>Medical Ecosystem</em></h2>
   <p class="section-sub reveal">MediOnTech partners across the entire healthcare value chain to ensure optimized, timely, and data-driven delivery.</p>
   <div class="eco-grid reveal">
     <div class="eco-item"><span class="eco-icon">⚙️</span>Device Manufacturers</div>
@@ -503,9 +285,8 @@
   <div class="global-inner">
     <div>
       <div class="section-tag">/ From Nevada to the World</div>
-      <h2 class="section-title reveal">네바다를 기반으로<br><em>세계로</em></h2>
+      <h2 class="section-title reveal">From Nevada<br><em>to the World</em></h2>
       <p class="reveal" style="color:var(--muted);font-size:0.95rem;max-width:44ch;margin-bottom:1.5rem;">Headquartered in Nevada, United States, MediOnTech serves individuals and families globally — bridging regional healthcare systems into a unified digital health layer.</p>
-      <p class="reveal" style="color:var(--muted);font-size:0.85rem;">지역별 의료 시스템을 연결하는 글로벌 디지털 헬스 플랫폼을 구축합니다.</p>
     </div>
     <div class="global-visual reveal">
       <div class="globe-rings">
@@ -528,20 +309,20 @@
 <section class="vision" id="vision">
   <div class="section-tag">/ Our Vision</div>
   <h2 class="section-title reveal">MediOnTech is a<br><em>lifelong partner</em> in health.</h2>
-  <p class="reveal" style="color:var(--muted);font-size:0.95rem;max-width:55ch;margin-bottom:1rem;">메디온테크는 개인과 가족, 커뮤니티의 평생 건강 파트너입니다. We envision a future where healthcare is:</p>
+  <p class="reveal" style="color:var(--muted);font-size:0.95rem;max-width:55ch;margin-bottom:1rem;">We envision a future where healthcare is:</p>
   <div class="vision-pillars reveal">
-    <div class="pillar"><span class="pillar-word">Predictive</span><div class="pillar-kr">예측 기반</div></div>
-    <div class="pillar"><span class="pillar-word">Preventive</span><div class="pillar-kr">예방 중심</div></div>
-    <div class="pillar"><span class="pillar-word">Personalized</span><div class="pillar-kr">개인 맞춤형</div></div>
-    <div class="pillar"><span class="pillar-word">Secure</span><div class="pillar-kr">보안 강화</div></div>
-    <div class="pillar"><span class="pillar-word">Integrated</span><div class="pillar-kr">통합 생태계</div></div>
+    <div class="pillar"><span class="pillar-word">Predictive</span></div>
+    <div class="pillar"><span class="pillar-word">Preventive</span></div>
+    <div class="pillar"><span class="pillar-word">Personalized</span></div>
+    <div class="pillar"><span class="pillar-word">Secure</span></div>
+    <div class="pillar"><span class="pillar-word">Integrated</span></div>
   </div>
 </section>
 
 <!-- CTA -->
 <section id="cta" class="cta-section">
   <div class="section-tag" style="justify-content:center;display:flex;">/ Join The Future</div>
-  <h2 class="section-title reveal">미래 의료 혁신에<br><em>함께하세요</em></h2>
+  <h2 class="section-title reveal">Join us in the<br><em>future of healthcare</em></h2>
   <p class="section-sub reveal">Partner with us, invest, or get early access to the platform that's redefining what it means to be healthy — for everyone, everywhere.</p>
   <div class="cta-btns reveal">
     <a href="#" class="btn-primary">Partner With Us</a>
@@ -552,120 +333,24 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Medi<span>On</span>Tech</div>
-  <div class="footer-note">Headquartered in Nevada, USA &nbsp;·&nbsp; Editorial: <a href="https://www.mediontech.com" target="_blank" style="color:var(--teal);text-decoration:none;">mediontech.com</a> &nbsp;·&nbsp; © 2026 MediOnTech</div>
+  <div class="footer-logo" style="display: flex; align-items: center; gap: 1.5rem;">
+    <img src="images/mediontech-nv-logo.png" alt="MediOnTech Logo" style="height: 40px; width: auto; opacity: 0.9;">
+    <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--text); line-height: 1;">Medi<span style="color: var(--teal);">On</span>Tech</div>
+  </div>
+  <div class="footer-note">
+    info@mediontech.com &nbsp;·&nbsp; Headquartered in Nevada, USA &nbsp;·&nbsp; Editorial: <a href="https://www.mediontech.com" target="_blank" style="color:var(--teal);text-decoration:none;">mediontech.com</a> &nbsp;·&nbsp; © 2026 MediOnTech
+  </div>
 </footer>
 
+<script src="script.js"></script>
 <script>
-  // Intersection Observer for reveal animations
-  const observerOptions = { threshold: 0.08 };
-  const revealObserver = new IntersectionObserver(entries => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 60);
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  function initReveals() {
-    document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObserver.observe(el));
-  }
-
-  // Initial call for static content
-  initReveals();
-
-  // Dynamic News Loading
-  async function fetchNews() {
-    const rssUrl = 'https://www.mediontech.com/rss/';
-    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-
-    try {
-      const response = await fetch(apiUrl);
-      const data = await response.json();
-
-      if (data.status === 'ok') {
-        renderNews(data.items);
-      }
-    } catch (error) {
-      console.error('Error fetching news:', error);
-      document.getElementById('ticker-content').innerHTML = '<span class="ticker-item">Unable to load latest news at this time.</span>';
-    }
-  }
-
-  function renderNews(items) {
-    if (!items || items.length === 0) return;
-
-    // 1. Render Ticker
-    const tickerContainer = document.getElementById('ticker-content');
-    const tickerItems = items.slice(0, 10);
-    const tickerHtml = tickerItems.map(item => `
-      <a href="${item.link}" target="_blank" class="ticker-item">${item.title}</a>
-      <span class="ticker-sep">◆</span>
-    `).join('');
-    tickerContainer.innerHTML = tickerHtml + tickerHtml;
-
-    // 2. Render Featured
-    const featured = items[0];
-    const featuredContainer = document.getElementById('featured-news-container');
-    
-    const date = new Date(featured.pubDate);
-    const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-    const categories = featured.categories.length > 0 ? featured.categories.join(' · ') : 'Insights';
-    const image = featured.enclosure?.link || featured.thumbnail || '';
-
-    featuredContainer.innerHTML = `
-      <div class="news-featured reveal">
-        <div class="news-featured-img">
-          <img src="${image}" alt="${featured.title}" loading="lazy">
-        </div>
-        <div class="news-featured-body">
-          <div>
-            <div class="news-cat">${categories} · ${dateStr}</div>
-            <a href="${featured.link}" target="_blank" class="news-featured-title">${featured.title}</a>
-            <p class="news-featured-excerpt">${featured.description}</p>
-          </div>
-          <div class="news-meta">
-            <span>${featured.author || 'MediOnTech'}</span>
-            <span class="news-meta-dot"></span>
-            <span>Free</span>
-          </div>
-        </div>
-      </div>
-    `;
-
-    // 3. Render Grid
-    const gridContainer = document.getElementById('news-grid-container');
-    gridContainer.innerHTML = '';
-    
-    const gridItems = items.slice(1, 7); // Show next 6 items
-    gridItems.forEach(item => {
-      const itemDate = new Date(item.pubDate);
-      const itemDateStr = itemDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-      const itemCats = item.categories.length > 0 ? item.categories.join(' · ') : 'News';
-      const itemImg = item.enclosure?.link || item.thumbnail || '';
-
-      const cardHtml = `
-        <a href="${item.link}" target="_blank" class="news-card reveal">
-          <div class="news-card-img">
-            <img src="${itemImg}" alt="${item.title}" loading="lazy">
-          </div>
-          <div class="news-card-body">
-            <div class="news-card-cat">${itemCats}</div>
-            <div class="news-card-title">${item.title}</div>
-            <div class="news-card-date">${itemDateStr} · ${item.author || 'MediOnTech'}</div>
-          </div>
-        </a>
-      `;
-      gridContainer.insertAdjacentHTML('beforeend', cardHtml);
-    });
-
-    // Re-initialize reveals for dynamic content
-    initReveals();
-  }
-
-  // Fetch news on load
-  fetchNews();
+  MediOnTech.init({
+    locale: 'en-US',
+    errorMsg: 'Unable to load latest news at this time.',
+    defaultCatFeatured: 'Insights',
+    defaultCatGrid: 'News',
+    freeTag: 'Free'
+  });
 </script>
 </body>
 </html>
