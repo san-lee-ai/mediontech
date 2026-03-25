@@ -41,7 +41,9 @@
 
   async function fetchNews(config) {
     const rssUrl = 'https://www.mediontech.com/rss/';
-    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+    const rssUrlWithTimestamp = `${rssUrl}?t=${new Date().getTime()}`;
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrlWithTimestamp)}`;
+    console.log('Fetching news from:', apiUrl);
     try {
       const response = await fetch(apiUrl);
       const data = await response.json();
