@@ -54,6 +54,12 @@
     }
   }
 
+  function stripHtml(html) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    return (tmp.textContent || tmp.innerText || '').replace(/\s+/g, ' ').trim();
+  }
+
   function renderNews(items, config) {
     if (!items || items.length === 0) return;
 
@@ -82,7 +88,7 @@
             <div>
               <div class="news-cat">${categories} · ${dateStr}</div>
               <a href="${featured.link}" target="_blank" class="news-featured-title">${featured.title}</a>
-              <p class="news-featured-excerpt">${featured.description}</p>
+              <p class="news-featured-excerpt">${stripHtml(featured.description).slice(0, 260).replace(/\s\S+$/, '') + '…'}</p>
             </div>
             <div class="news-meta">
               <span>${featured.author || 'MediOnTech'}</span>
